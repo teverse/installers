@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+   <mime-type type="application/tevapp">
+     <comment>Teverse App Bundle</comment>
+     <glob pattern="*.tevapp"/>
+   </mime-type>
+</mime-info>
