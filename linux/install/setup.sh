@@ -27,14 +27,13 @@ if [ "$response" = "y" ]; then
     fi
 
     echo "Setting up Teverse"
-    sudo mv $teverseDir/tevapp.xml /usr/share/mime/packages/tevapp.xml
-    sudo chmod 644 /usr/share/mime/packages/tevapp.xml
-    sudo chgrp root /usr/share/mime/packages/tevapp.xml
-    sudo chown root /usr/share/mime/packages/tevapp.xml
-    sudo mv $teverseDir/teverse.desktop /usr/share/applications/teverse.desktop
-    sudo chmod 644 /usr/share/applications/teverse.desktop
-    sudo chgrp root /usr/share/applications/teverse.desktop
-    sudo chown root /usr/share/applications/teverse.desktop
+    #sudo mv $teverseDir/tevapp.xml /usr/share/mime/packages/tevapp.xml
+    
+    mkdir ~/.icons
+    cp $teverseDir/1024.png ~/.icons/teverse.png
+    mv $teverseDir/teverse.desktop ~/.local/share/applications/teverse.desktop
+    chmod 777 ~/.local/share/applications/teverse.desktop
+    xdg-mime default teverse.desktop x-scheme-handler/teverse
 
     sudo update-mime-database /usr/share/mime
     sudo update-desktop-database
