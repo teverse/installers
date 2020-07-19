@@ -19,15 +19,29 @@ if [ "$response" = "y" ]; then
     ln -s $teverseDir/libopenal.so.1.20.1 $teverseDir/libopenal.so.1
     ln -s $teverseDir/libopenal.so.1.20.1 $teverseDir/libopenal.so
 
+        echo " 
+     _                           _                 _           
+  __| | ___ _ __   ___ _ __   __| | ___ _ __   ___(_) ___  ___ 
+ / _\` |/ _ \ '_ \ / _ \ '_ \ / _\` |/ _ \ '_ \ / __| |/ _ \/ __|
+| (_| |  __/ |_) |  __/ | | | (_| |  __/ | | | (__| |  __/\__ \\
+ \__,_|\___| .__/ \___|_| |_|\__,_|\___|_| |_|\___|_|\___||___/
+           |_|                       
+"
+
     if [ -f /etc/debian_version ]; then
-        echo "Installing dependencies using apt-get"
+        echo "Installing using apt-get"
         sudo apt-get install -y freeglut3
+    elif [ -f /etc/arch-release ]; then
+        echo "Installing using pacman"
+        sudo pacman -S --noconfirm freeglut
+    elif [ -f /etc/redhat-release ]; then
+        echo "Installing using yum"
+        sudo yum install -y freeglut
     else
         echo "Could not identify a suitable package manager, no dependencies could be installed."
     fi
 
     echo "Setting up Teverse"
-    #sudo mv $teverseDir/tevapp.xml /usr/share/mime/packages/tevapp.xml
     
     mkdir ~/.icons
     cp $teverseDir/1024.png ~/.icons/teverse.png
@@ -38,7 +52,15 @@ if [ "$response" = "y" ]; then
     update-desktop-database
     xdg-mime default teverse.desktop x-scheme-handler/teverse
 
-    echo "Complete, thank you for installing Teverse for Linux."
+    echo " 
+                           _      _       
+  ___ ___  _ __ ___  _ __ | | ___| |_ ___ 
+ / __/ _ \| '_ \` _ \| '_ \| |/ _ \ __/ _ \\
+| (_| (_) | | | | | | |_) | |  __/ ||  __/
+ \___\___/|_| |_| |_| .__/|_|\___|\__\___|
+                    |_|                               
+"
+    echo "Complete, Teverse should now appear in your applications folder."
 else
     echo "Cancelled."
 fi
