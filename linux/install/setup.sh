@@ -31,12 +31,12 @@ if [ "$response" = "y" ]; then
     
     mkdir ~/.icons
     cp $teverseDir/1024.png ~/.icons/teverse.png
-    mv $teverseDir/teverse.desktop ~/.local/share/applications/teverse.desktop
-    chmod 777 ~/.local/share/applications/teverse.desktop
-    xdg-mime default teverse.desktop x-scheme-handler/teverse
+    chmod +x $teverseDir/teverse.desktop
+    sed -i "s~TEV_DIR~${teverseDir}~g" $teverseDir/teverse.desktop
+    cp $teverseDir/teverse.desktop ~/.local/share/applications/teverse.desktop
 
-    sudo update-mime-database /usr/share/mime
-    sudo update-desktop-database
+    update-desktop-database
+    xdg-mime default teverse.desktop x-scheme-handler/teverse
 
     echo "Complete, thank you for installing Teverse for Linux."
 else

@@ -1,8 +1,8 @@
 [Desktop Entry]
+Encoding=UTF-8
+Version=1.0
 Type=Application
-Name=Teverse
-Exec=/bin/sh -c '$HOME/teverse/Teverse'
-Icon=teverse.png
 Terminal=false
-Categories=GTK;GNOME;
-MimeType=x-scheme-handler/teverse;application/tevapp;
+Exec=TEV_DIR/Teverse %u
+Name=Teverse
+Icon=teverse.png
