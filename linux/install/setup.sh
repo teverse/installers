@@ -1,23 +1,23 @@
 #!/bin/bash
 
 home="$(eval echo ~)"
-teverseDir="${home}/teverse"
-echo " _                               
-| |_ _____   _____ _ __ ___  ___ 
-| __/ _ \ \ / / _ \ '__/ __|/ _ \\
-| ||  __/\ V /  __/ |  \__ \  __/
- \__\___| \_/ \___|_|  |___/\___| beta
-
+deviapDir="${home}/deviap"
+echo "
+  ____  _______     _____    _    ____  
+ |  _ \| ____\ \   / /_ _|  / \  |  _ \ 
+ | | | |  _|  \ \ / / | |  / _ \ | |_) |
+ | |_| | |___  \ V /  | | / ___ \|  __/ 
+ |____/|_____|  \_/  |___/_/   \_\_| a l p h a                                    
 "
 
-read -p "Would you like to Teverse at ${teverseDir}? (y/n)  " response
+read -p "Would you like to Deviap at ${deviapDir}? (y/n)  " response
 if [ "$response" = "y" ]; then
-    cp -r -v ./ $teverseDir
-    rm $teverseDir/setup.sh
+    cp -r -v ./ $deviapDir
+    rm $deviapDir/setup.sh
 
     echo "Setting up dependencies"
-    ln -s $teverseDir/libopenal.so.1.20.1 $teverseDir/libopenal.so.1
-    ln -s $teverseDir/libopenal.so.1.20.1 $teverseDir/libopenal.so
+    ln -s $deviapDir/libopenal.so.1.20.1 $deviapDir/libopenal.so.1
+    ln -s $deviapDir/libopenal.so.1.20.1 $deviapDir/libopenal.so
 
         echo " 
      _                           _                 _           
@@ -41,16 +41,16 @@ if [ "$response" = "y" ]; then
         echo "Could not identify a suitable package manager, no dependencies could be installed."
     fi
 
-    echo "Setting up Teverse"
+    echo "Setting up Deviap"
     
     mkdir ~/.icons
-    cp $teverseDir/1024.png ~/.icons/teverse.png
-    chmod +x $teverseDir/teverse.desktop
-    sed -i "s~TEV_DIR~${teverseDir}~g" $teverseDir/teverse.desktop
-    cp $teverseDir/teverse.desktop ~/.local/share/applications/teverse.desktop
+    cp $deviapDir/1024.png ~/.icons/deviap.png
+    chmod +x $deviapDir/deviap.desktop
+    sed -i "s~TEV_DIR~${deviapDir}~g" $deviapDir/deviap.desktop
+    cp $deviapDir/deviap.desktop ~/.local/share/applications/deviap.desktop
 
     update-desktop-database
-    xdg-mime default teverse.desktop x-scheme-handler/teverse
+    xdg-mime default deviap.desktop x-scheme-handler/deviap
 
     echo " 
                            _      _       
@@ -60,7 +60,7 @@ if [ "$response" = "y" ]; then
  \___\___/|_| |_| |_| .__/|_|\___|\__\___|
                     |_|                               
 "
-    echo "Complete, Teverse should now appear in your applications folder."
+    echo "Complete, Deviap should now appear in your applications folder."
 else
     echo "Cancelled."
 fi
